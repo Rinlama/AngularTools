@@ -13,10 +13,14 @@ export class PicsumComponent implements OnInit {
   constructor(private picsumService: PicsumService) {}
 
   ngOnInit(): void {
-    this.getImages();
+    this.getImages(1);
   }
 
-  getImages() {
-    this.picsum = this.picsumService.getPicsum();
+  getImages(pageno: number) {
+    this.picsum = this.picsumService.getPicsum(pageno);
+  }
+
+  onPageChange(pageno: number) {
+    this.getImages(pageno);
   }
 }

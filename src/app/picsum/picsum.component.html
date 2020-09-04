@@ -7,4 +7,30 @@
       </div>
     </div>
   </div>
+  <nav aria-label="Page navigation example" class="mt-2">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" (click)="pagination.onFirst()">First</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="pagination.onPrevious()">Previous</a>
+      </li>
+      <input
+        #pagination="pagination"
+        appPagination
+        type="number"
+        min="1"
+        max="5"
+        [totalPages]="5"
+        value="1"
+        (onChangeEventEmitter)="onPageChange($event)"
+      />
+      <li class="page-item">
+        <a class="page-link" (click)="pagination.onNext()">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="pagination.onLast()">Last</a>
+      </li>
+    </ul>
+  </nav>
 </div>

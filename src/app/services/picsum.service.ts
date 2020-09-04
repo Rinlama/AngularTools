@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 export class PicsumService {
   constructor(private httpclient: HttpClient) {}
 
-  getPicsum(): Observable<any> {
-    return this.httpclient.get('https://picsum.photos/v2/list?page=1&limit=8');
+  getPicsum(pageno: number): Observable<any> {
+    return this.httpclient.get(
+      'https://picsum.photos/v2/list?page=' + pageno + '&limit=6'
+    );
   }
 }
