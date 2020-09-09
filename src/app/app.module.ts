@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReadexcelDirective } from './directives/readexcel.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReadexcelDirective
   ],
   imports: [
     BrowserModule,

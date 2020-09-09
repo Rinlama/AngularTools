@@ -1,2 +1,10 @@
 <input type="file" (change)="readExcel($event)" />
 <button (click)="createExcel()">createExcel</button>
+
+<input type="file" appReadexcel #readExcel="readExcel" />
+
+<ul>
+  <li *ngFor="let n of readExcel.parseExcelData | async">
+    {{ n.Item }}
+  </li>
+</ul>
