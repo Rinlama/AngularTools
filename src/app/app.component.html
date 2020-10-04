@@ -1,4 +1,6 @@
 {{ CustomerForm.value | json }}
+<br />
+{{ CustomerForm.invalid | json }}
 
 <div class="container">
   <form [formGroup]="CustomerForm" (submit)="onSubmit()">
@@ -8,19 +10,34 @@
         <input
           type="text"
           class="form-control form-control-sm"
+          [ngClass]="
+            (CustomerForm.get('name').touched ||
+              CustomerForm.get('name').dirty) &&
+            CustomerForm.get('name').hasError('required')
+              ? 'is-invalid'
+              : '' || CustomerForm.get('name').hasError('minlength')
+              ? 'is-invalid'
+              : '' ||
+                ((CustomerForm.get('name').touched ||
+                  CustomerForm.get('name').dirty) &&
+                  !CustomerForm.get('name').invalid)
+              ? 'is-valid'
+              : ''
+          "
           formControlName="name"
         />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label>Email0 </label>
-        <input
-          type="text"
-          class="form-control form-control-sm"
-          formControlName="name"
-        />
+        <div class="invalid-feedback">
+          {{
+            CustomerForm.get("name").hasError("required")
+              ? " Name is required"
+              : ""
+          }}
+          {{
+            CustomerForm.get("name").hasError("minlength")
+              ? " 5 letters required"
+              : ""
+          }}
+        </div>
       </div>
     </div>
 
@@ -125,6 +142,12 @@
     <button type="button" (click)="addPhone()" class="btn btn-primary mr-2">
       Add Cell Phone
     </button>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="CustomerForm.invalid"
+    >
+      Submit
+    </button>
   </form>
 </div>

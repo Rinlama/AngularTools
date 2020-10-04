@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   ngOnInit(): void {
     this.CustomerForm = this.fb.group({
-      name: new FormControl('Sam'),
+      name: ['', [Validators.required, Validators.minLength(5)]],
       // cellPhone: this.getPhoneFromGroup(),
       // homePhone: this.getPhoneFromGroup(),
       email: new FormControl('', [Validators.email]),
