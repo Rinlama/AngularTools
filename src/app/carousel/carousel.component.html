@@ -1,0 +1,38 @@
+<div class="container">
+  {{ counterValue }}
+  <div
+    class="progressBar"
+    [ngStyle]="{
+      'border-top': '5px solid #2578A9',
+      width: counterValue,
+      transition: 'all 0.1s linear'
+    }"
+  ></div>
+  <div class="carousel">
+    <ng-container *ngFor="let slide of slides; let i = index">
+      <ng-container *ngIf="i == currentIndex">
+        <img [src]="slide.src" class="slide" @carouselAnimation />
+        <div class="carousel-details" @carouselAnimation>
+          <h2>{{ slide.name }}</h2>
+          <p>{{ slide.description }}</p>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- controls -->
+    <button
+      class="control prev"
+      (click)="prev()"
+      [disabled]="currentIndex === 0"
+    >
+      <i class="las la-caret-square-left"></i>
+    </button>
+    <button
+      class="control next"
+      (click)="next()"
+      [disabled]="currentIndex === this.slides.length - 1"
+    >
+      <i class="las la-caret-square-right"></i>
+    </button>
+  </div>
+</div>
