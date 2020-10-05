@@ -5,12 +5,12 @@
 .carousel {
   position: relative;
   display: flex;
-  height: 400px;
+  height: 600px;
   width: 100%;
 }
 .carousel img {
   position: absolute;
-  height: 400px;
+  height: 600px;
   width: 100%;
   object-fit: cover;
 }
