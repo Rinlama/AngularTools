@@ -1,0 +1,27 @@
+<div class="container">
+  <div
+  class="progressBar"
+  [ngStyle]="{
+    'border-top': '5px solid red',
+    width: counterValue,
+    transition: 'all 0.1s linear'
+  }"
+></div>
+  <div class="header">
+    <p class="header-pargraph">Document ({{currentIndex +1}} / {{slides.length}})</p>
+  </div>
+  <div class="carousel">
+    <ul class="list-ul">
+      <li *ngFor="let slide of slides; let i = index" class="list-li">
+        <ng-container *ngIf="i == currentIndex">
+          <img  class="carousel-image" [src]="slide.src" @carouselAnimation />
+        </ng-container>
+      </li>
+    </ul>
+
+    <div class="controls">
+      <button class="next" (click)="next()">Next</button>
+      <button class="pre" (click)="pre()">Pre</button>
+    </div>
+  </div>
+</div>
