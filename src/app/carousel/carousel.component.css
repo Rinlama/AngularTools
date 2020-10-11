@@ -1,0 +1,39 @@
+.container {
+  padding: 50px;
+  background: #5c6bc0;
+}
+
+.header {
+  padding: 10px;
+  background: white;
+}
+.carousel {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+  height: 250px;
+}
+.carousel-image {
+  width: 100%;
+  object-fit: cover;
+  height: 250px;
+}
+.list-ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.next {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+}
+
+.pre {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+}
