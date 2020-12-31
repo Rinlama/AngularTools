@@ -1,0 +1,74 @@
+<div class="header">
+  <h1 mat-dialog-title>Task</h1>
+  <span>
+    <button mat-icon-button color="primary" (click)="enabledEdit = true">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="removeTaskById()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </span>
+</div>
+<div mat-dialog-content>
+  <form class="form" [formGroup]="taskForm">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Title"
+        formControlName="title"
+        [readonly]="!enabledEdit"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option
+          *ngFor="let taskType of taskTypes"
+          [value]="taskType.type"
+          [disabled]="!enabledEdit"
+        >
+          {{ taskType.type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Due date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="dueDate"
+        [readonly]="!enabledEdit"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="picker"
+        *ngIf="enabledEdit"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="field-textarea">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="description"
+        formControlName="description"
+        [readonly]="!enabledEdit"
+      ></textarea>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button
+        mat-raised-button
+        *ngIf="enabledEdit"
+        color="primary"
+        mat-button
+        [disabled]="taskForm.invalid"
+        (click)="onUpdate()"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

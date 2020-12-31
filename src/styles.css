@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  --done-color: #f68059;
+  --todo-color: #ffbf3a;
+  --pending-color: #4e3dc8;
+}
+
+var body {
+  margin: 0;
+  color: #2c3e50;
+}
+.divider {
+  border-bottom: 1px solid #ccc;
+}
+.mat-form-field-flex {
+  background-color: white !important;
+  padding-left: 0 !important;
+}
+
+.d-flex {
+  display: flex;
+}
+.justify-content-between {
+  justify-content: space-between;
+}

@@ -1,0 +1,37 @@
+<div class="home">
+  <div class="header">
+    <h1>Dashboard</h1>
+    <div class="content">
+      <div class="total-task-chart">
+        <div class="chart">
+          <canvas
+            baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"
+            [options]="doughnutChartOptions"
+            [colors]="doughnutChartColor"
+          >
+          </canvas>
+        </div>
+        <div class="total-task">
+          <p class="data">41%</p>
+          <p class="data-type">Tasks</p>
+        </div>
+      </div>
+      <div>
+        <div
+          class="total-task-analytics"
+          *ngFor="let typecount of taskTypeCount"
+        >
+          <div class="display"></div>
+          <div>
+            <p class="data">{{ typecount.count }} %</p>
+            <p class="data-type">{{ typecount.type }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-list-task (refreshChart)="refreshChart()"></app-list-task>

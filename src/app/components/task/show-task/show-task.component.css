@@ -1,0 +1,20 @@
+mat-selection-list {
+  height: 100%;
+}
+mat-form-field {
+  width: 100%;
+}
+.form {
+  height: 400px;
+}
+.field-textarea textarea {
+  height: 110px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.disabled {
+  background: #cccc;
+}
