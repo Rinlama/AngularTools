@@ -1,0 +1,48 @@
+<div class="header">
+  <h1>Task</h1>
+  <button mat-icon-button color="warn" (click)="onDeleteTask()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+
+<div class="add-task">
+  <div class="content">
+    <form [formGroup]="taskForm" (submit)="updateTask()">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let n of typeOptions" [value]="n.type">{{
+            n.type
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Due date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+      <button
+        [disabled]="taskForm.invalid"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>

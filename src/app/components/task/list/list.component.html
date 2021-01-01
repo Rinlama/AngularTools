@@ -1,0 +1,24 @@
+<div class="list">
+  <h1>Tasks</h1>
+  <mat-selection-list [multiple]="false">
+    <div class="mat-list-option-cover">
+      <mat-list-option
+        *ngFor="let task of this.tasks | async"
+        (click)="onOpenDialog(task)"
+      >
+        <div class="d-flex justify-content-between">
+          <span class="task-date">
+            {{ task.dueDate | date: "mediumDate" }}
+          </span>
+          <span class="task-date">
+            {{ task.type }}
+          </span>
+        </div>
+        <span class="task-title">
+          {{ task.title.substring(0, 40) }}
+          {{ task.title.length > 40 ? "..." : "" }}
+        </span>
+      </mat-list-option>
+    </div>
+  </mat-selection-list>
+</div>

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  --done-color: #f68059;
+  --todo-color: #ffbf3a;
+  --pending-color: #4e3dc8;
+}
+
+.mat-form-field-flex {
+  background-color: white !important;
+  padding-left: 0 !important;
+}
+
+mat-form-field {
+  width: 100%;
+}
+textarea {
+  height: 150px !important;
+}
