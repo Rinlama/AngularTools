@@ -1,1 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  background: #ecf0f1;
+  font-family: "Poppins", sans-serif;
+}
+p {
+  font-weight: 300;
+  color: #111;
+}
+body {
+  position: relative;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  border-top: 5px solid #3498db;
+}
+.header .logo {
+  padding: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.navbar .nav-list {
+  padding: 20px;
+  list-style: none;
+  display: flex;
+}
+.navbar .nav-list a,
+.header .logo a {
+  text-decoration: none;
+  color: #111;
+}
+.navbar .nav-list a:hover,
+.header .logo a:hover {
+  color: #3498db;
+}
+.navbar .nav-list .nav-item:hover,
+.header .logo:hover {
+  transform: scale(1.1);
+}
+.navbar .nav-list .nav-item {
+  padding: 0 20px;
+  transition: transform 0.2s ease-in-out;
+}
+.container {
+  margin-top: 80px;
+  background: #fff;
+  padding: 10px 80px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+/* input */
+.input-box {
+  margin: 10px;
+}
+.input-box label {
+  padding: 10px;
+}
+.input-box input {
+  padding: 5px;
+  outline: #34495e;
+  border: 1px solid #34495e;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.input-box input:hover,
+.input-box input:focus {
+  padding: 5px;
+  outline: #3498db;
+  border: 1px solid #384249;
+}
+.input-search-box {
+  position: relative;
+}
+/* utilies */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col-100 {
+  width: 100%;
+}
+
+.col-50 {
+  width: 50%;
+}
+.py-20 {
+  padding: 0 40px;
+}
+/* list */
+.list-group {
+  list-style: none;
+}
+.list-group .list-item {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+.list-group .list-item img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+.list-group .list-item p {
+  padding: 10px;
+}
