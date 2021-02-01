@@ -26,7 +26,6 @@ body {
   justify-content: space-between;
   background-color: #fff;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
-  border-top: 5px solid #3498db;
 }
 .header .logo {
   padding: 20px;
