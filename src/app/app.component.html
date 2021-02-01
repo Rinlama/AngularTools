@@ -15,38 +15,17 @@
 </div>
 
 <section class="container">
-  <div class="row">
-    <div class="col-100">
-      <div class="input-box">
-        <label for="search">Search</label>
-        <input type="text" />
-      </div>
-    </div>
-    <div class="col-100 py-20">
-      <ul class="list-group">
-        <li class="list-item">
-          <img
-            src="https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg"
-          />
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
-            suscipit animi sint, magni, eaque, veritatis ab tempora commodi cum
-            voluptatibus labore! Reprehenderit ea natus sed fugiat iste quia
-            minus eius earum sequi, incidunt reiciendis aut dignissimos quos
-            facere sit consequatur quod quis magni, veniam hic error tenetur,
-            amet a omnis?
-          </p>
-        </li>
-        <li class="list-item">
-          <img
-            src="https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg"
-          />
-          <p>
-            Lorem ispansum dolor sit amet consectetur adipisicing elit.
-            Architecto, delectus.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <label>Frame Work</label>
+  <select (change)="onFWChange($event)">
+    <option *ngFor="let n of framework" [value]="n">
+      {{ n }}
+    </option>
+  </select>
+  <br />
+  <label>Colors</label>
+  <select (change)="onColorChange($event)">
+    <option *ngFor="let n of color" [value]="n">
+      {{ n }}
+    </option>
+  </select>
 </section>
