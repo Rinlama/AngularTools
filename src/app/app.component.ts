@@ -8,6 +8,7 @@ import { map, mergeAll, mergeMap } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  title = 'look into console';
   ngOnInit(): void {
     const food = ['steak', 'sandwich'];
 
