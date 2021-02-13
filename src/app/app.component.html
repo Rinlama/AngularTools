@@ -15,38 +15,26 @@
 </div>
 
 <section class="container">
-  <div class="row">
-    <div class="col-100">
-      <div class="input-box">
-        <label for="search">Search</label>
-        <input type="text" />
-      </div>
-    </div>
-    <div class="col-100 py-20">
-      <ul class="list-group">
-        <li class="list-item">
-          <img
-            src="https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg"
-          />
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
-            suscipit animi sint, magni, eaque, veritatis ab tempora commodi cum
-            voluptatibus labore! Reprehenderit ea natus sed fugiat iste quia
-            minus eius earum sequi, incidunt reiciendis aut dignissimos quos
-            facere sit consequatur quod quis magni, veniam hic error tenetur,
-            amet a omnis?
-          </p>
-        </li>
-        <li class="list-item">
-          <img
-            src="https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg"
-          />
-          <p>
-            Lorem ispansum dolor sit amet consectetur adipisicing elit.
-            Architecto, delectus.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <button class="btn btn-primary" type="button" (click)="getData()">
+    <span *ngIf="isBusy">
+      <span
+        class="spinner-border spinner-border-sm"
+        role="status"
+        aria-hidden="true"
+      ></span>
+      Fetching Data
+    </span>
+    <span *ngIf="!isBusy"> Fetch Data </span>
+  </button>
+
+  <p>
+    Status :
+    <span [ngClass]="status === 'success' ? 'text-success' : 'text-danger'">
+      {{ status }}
+    </span>
+  </p>
+
+  <ul class="list-group mt-4">
+    <li class="list-group-item" *ngFor="let n of data">{{ n }}</li>
+  </ul>
 </section>
