@@ -9,6 +9,7 @@ import { ProjectComponent } from './component/project/project.component';
 import { ProjectdetailsComponent } from './component/projectdetails/projectdetails.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, ProjectComponent, ProjectdetailsComponent],
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
