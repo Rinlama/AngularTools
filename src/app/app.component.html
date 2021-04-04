@@ -1,6 +1,16 @@
+<ngx-spinner
+  bdColor="rgba(255,255,255,0.8)"
+  size="medium"
+  color="#a2a2a2"
+  type="ball-beat"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
+>
+
 <div class="header">
   <div class="logo">
-    <h3><a href="#">Kira Stack</a></h3>
+    <h3><a href="#">Projects</a></h3>
   </div>
 
   <div class="navbar">
@@ -23,30 +33,7 @@
       </div>
     </div>
     <div class="col-100 py-20">
-      <ul class="list-group">
-        <li class="list-item">
-          <img
-            src="https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg"
-          />
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
-            suscipit animi sint, magni, eaque, veritatis ab tempora commodi cum
-            voluptatibus labore! Reprehenderit ea natus sed fugiat iste quia
-            minus eius earum sequi, incidunt reiciendis aut dignissimos quos
-            facere sit consequatur quod quis magni, veniam hic error tenetur,
-            amet a omnis?
-          </p>
-        </li>
-        <li class="list-item">
-          <img
-            src="https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg"
-          />
-          <p>
-            Lorem ispansum dolor sit amet consectetur adipisicing elit.
-            Architecto, delectus.
-          </p>
-        </li>
-      </ul>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </section>

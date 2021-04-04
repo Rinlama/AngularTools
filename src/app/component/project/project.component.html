@@ -1,0 +1,14 @@
+<ul class="list-group">
+  <li class="list-item" *ngFor="let p of (this.project$ | async)?.data">
+    <a [routerLink]="['/projects', p.id]">
+      <p><span class="list-item-heading">Id</span>: {{ p.id }}</p>
+      <p>
+        <span class="list-item-heading">Project Name</span>:
+        {{ p.project_name }}
+      </p>
+      <p>
+        {{ p.description }}
+      </p>
+    </a>
+  </li>
+</ul>

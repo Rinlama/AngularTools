@@ -10,9 +10,14 @@ body {
   background: #ecf0f1;
   font-family: "Poppins", sans-serif;
 }
+a {
+  text-decoration: none;
+}
 p {
   font-weight: 300;
   color: #111;
+  padding: 0;
+  margin: 0;
 }
 body {
   position: relative;
@@ -26,7 +31,6 @@ body {
   justify-content: space-between;
   background-color: #fff;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
-  border-top: 5px solid #3498db;
 }
 .header .logo {
   padding: 20px;
@@ -114,6 +118,18 @@ body {
   height: 90px;
   object-fit: contain;
 }
-.list-group .list-item p {
+.list-group .list-item {
   padding: 10px;
+}
+.list-item {
+  display: flex;
+  flex-direction: column;
+}
+.list-item-heading {
+  font-weight: bold;
+}
+.list-item:hover {
+  cursor: pointer;
+  background: #ccc;
+  transition: 0.3s;
 }
