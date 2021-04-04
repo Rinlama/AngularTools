@@ -14,6 +14,7 @@ import { ProjectsService } from 'src/app/services/projects.service';
 export class ProjectdetailsComponent implements OnInit {
   projectForm?: FormGroup;
   editMode: boolean = false;
+  project: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -33,6 +34,9 @@ export class ProjectdetailsComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((d) => {
       this.getProjectById(d.id);
+      this.activatedRoute.queryParams.subscribe((d) => {
+        if (d.editMode === 'true') this.editModeEnabled();
+      });
     });
   }
   getProjectById(id: string) {
@@ -41,6 +45,7 @@ export class ProjectdetailsComponent implements OnInit {
       .getProjectById(id)
       .pipe(tap(() => this.spinner.hide()))
       .subscribe((data) => {
+        this.project = data;
         for (const iterator of Object.keys(data)) {
           const isIncluded = Object.keys(this.projectForm.controls).includes(
             iterator
@@ -51,7 +56,7 @@ export class ProjectdetailsComponent implements OnInit {
       });
     this.projectForm.disable();
   }
-  editModeToggle() {
+  editModeEnabled() {
     this.projectForm.enable();
     this.editMode = true;
   }

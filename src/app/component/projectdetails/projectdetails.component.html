@@ -1,4 +1,10 @@
-<button class="primary-btn" (click)="editModeToggle()">Edit</button>
+<button
+  class="primary-btn"
+  [routerLink]="['/projects', project?.id]"
+  [queryParams]="{ editMode: true }"
+>
+  Edit
+</button>
 
 <form [formGroup]="projectForm" *ngIf="projectForm">
   <div class="row">
