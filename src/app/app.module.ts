@@ -9,11 +9,18 @@ import { ProjectComponent } from './component/project/project.component';
 import { ProjectdetailsComponent } from './component/projectdetails/projectdetails.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, ProjectComponent, ProjectdetailsComponent],
+  declarations: [
+    AppComponent,
+    ProjectComponent,
+    ProjectdetailsComponent,
+    FilterPipe,
+  ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     NgxSpinnerModule,

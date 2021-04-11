@@ -11,6 +11,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ProjectComponent implements OnInit {
   project$: Observable<any>;
+  searchValue?: string;
   constructor(
     private spinner: NgxSpinnerService,
     private ps: ProjectsService
