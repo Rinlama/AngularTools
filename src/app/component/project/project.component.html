@@ -6,6 +6,7 @@
   <li
     class="list-item"
     *ngFor="let p of (this.project$ | async)?.data | filter: searchValue"
+    #theList
   >
     <a [routerLink]="['/projects', p.id]">
       <p><span class="list-item-heading">Id</span>: {{ p.id }}</p>

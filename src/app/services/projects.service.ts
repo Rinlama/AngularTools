@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 export class ProjectsService {
   constructor(private httpclient: HttpClient) {}
 
-  getProjects(): Observable<any> {
+  getProjects(page: number): Observable<any> {
     return this.httpclient.get(
-      'http://localhost/Laravel/Laravel_Youtube/public/api/projects'
+      `http://localhost/Laravel/Laravel_Youtube/public/api/projects?page=${page}`
     );
   }
   getProjectById(id: string): Observable<any> {
