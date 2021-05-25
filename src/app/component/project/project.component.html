@@ -5,18 +5,36 @@
 <ul class="list-group">
   <li
     class="list-item"
-    *ngFor="let p of (this.project$ | async)?.data | filter: searchValue"
-    #theList
+    *ngFor="let p of users | filter: searchValue; let i = index"
   >
-    <a [routerLink]="['/projects', p.id]">
-      <p><span class="list-item-heading">Id</span>: {{ p.id }}</p>
-      <p>
-        <span class="list-item-heading">Project Name</span>:
-        {{ p.project_name }}
-      </p>
-      <p>
-        {{ p.description }}
-      </p>
+    <a
+      [routerLink]="['/projects', p.id]"
+      class="user-link"
+      *ngIf="i + 1 == users.length"
+      #theLastList
+    >
+      <img [src]="p.avatar" />
+      <span>
+        <p><span class="list-item-heading">Id</span>: {{ p.id }}</p>
+        <p>
+          <span class="list-item-heading">Name</span>: {{ p.first_name }}
+          {{ p.last_name }}
+        </p>
+      </span>
+    </a>
+    <a
+      [routerLink]="['/projects', p.id]"
+      class="user-link"
+      *ngIf="i + 1 != users.length"
+    >
+      <img [src]="p.avatar" />
+      <span>
+        <p><span class="list-item-heading">Id</span>: {{ p.id }}</p>
+        <p>
+          <span class="list-item-heading">Name</span>: {{ p.first_name }}
+          {{ p.last_name }}
+        </p>
+      </span>
     </a>
   </li>
 </ul>

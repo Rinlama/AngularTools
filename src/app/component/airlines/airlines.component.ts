@@ -1,24 +1,21 @@
 import {
-  AfterContentInit,
-  AfterViewInit,
   Component,
   ElementRef,
   OnInit,
   QueryList,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, Subscription } from 'rxjs';
-import { ProjectsService } from 'src/app/services/projects.service';
 import { tap } from 'rxjs/operators';
+import { AirlinesService } from 'src/app/services/airlines/airlines.service';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.css'],
+  selector: 'app-airlines',
+  templateUrl: './airlines.component.html',
+  styleUrls: ['./airlines.component.css'],
 })
-export class ProjectComponent implements OnInit, AfterViewInit {
+export class AirlinesComponent implements OnInit {
   @ViewChildren('theLastList', { read: ElementRef })
   theLastList?: QueryList<ElementRef>;
 
@@ -30,37 +27,37 @@ export class ProjectComponent implements OnInit, AfterViewInit {
   currentPage: number = 1;
   totalPage: number;
 
-  users: any;
+  airlines: any;
   userSub: Subscription;
 
   constructor(
     private spinner: NgxSpinnerService,
-    private ps: ProjectsService
+    private as: AirlinesService
   ) {}
 
   ngOnInit(): void {
     this.intersectionObserver();
-    this.getUsers();
+    this.getAS();
   }
 
-  getUsers() {
+  getAS() {
     this.spinner.show();
-    this.userSub = this.ps
-      .getProjectUsers(this.currentPage)
+    this.userSub = this.as
+      .getAS(this.currentPage)
       .pipe(
         tap(() => {
           this.spinner.hide();
         })
       )
       .subscribe((d) => {
-        this.currentPage = d.page;
-        this.totalPage = d.total_pages;
+        console.log(d);
+        this.totalPage = d.totalPages;
 
         if (this.currentPage == 1) {
-          this.users = d.data;
+          this.airlines = d.data;
         } else {
           d.data.forEach((element: any) => {
-            this.users?.push(element);
+            this.airlines?.push(element);
           });
         }
       });
@@ -82,7 +79,7 @@ export class ProjectComponent implements OnInit, AfterViewInit {
       if (entries[0].isIntersecting) {
         if (this.currentPage < this.totalPage) {
           this.currentPage++;
-          this.getUsers();
+          this.getAS();
         }
       }
     }, option);

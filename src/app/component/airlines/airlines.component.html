@@ -1,0 +1,42 @@
+<div class="input-box">
+  <label for="search">Search</label>
+  <input type="text" name="search" [(ngModel)]="searchValue" />
+</div>
+<ul class="list-group">
+  <li
+    class="list-item"
+    *ngFor="let p of airlines | filter: searchValue; let i = index"
+  >
+    <a
+      [routerLink]="['/projects', p.id]"
+      class="user-link"
+      *ngIf="i + 1 == airlines.length"
+      #theLastList
+    >
+      <img [src]="p.airline.logo" />
+      <span>
+        <p><span class="list-item-heading">Name</span>: {{ p.airline.name }}</p>
+        <p><span class="list-item-heading">Passenger</span>: {{ p.name }}</p>
+        <p>
+          <span class="list-item-heading">Head Quaters</span>:
+          {{ p.airline.head_quaters }}
+        </p>
+      </span>
+    </a>
+    <a
+      [routerLink]="['/projects', p.id]"
+      class="user-link"
+      *ngIf="i + 1 != airlines.length"
+    >
+      <img [src]="p.airline.logo" />
+      <span>
+        <p><span class="list-item-heading">Name</span>: {{ p.airline.name }}</p>
+        <p><span class="list-item-heading">Passenger</span>: {{ p.name }}</p>
+        <p>
+          <span class="list-item-heading">Head Quaters</span>:
+          {{ p.airline.head_quaters }}
+        </p>
+      </span>
+    </a>
+  </li>
+</ul>
