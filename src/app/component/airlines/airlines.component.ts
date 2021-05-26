@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   OnInit,
@@ -15,61 +16,49 @@ import { AirlinesService } from 'src/app/services/airlines/airlines.service';
   templateUrl: './airlines.component.html',
   styleUrls: ['./airlines.component.css'],
 })
-export class AirlinesComponent implements OnInit {
+export class AirlinesComponent implements OnInit, AfterViewInit {
   @ViewChildren('theLastList', { read: ElementRef })
-  theLastList?: QueryList<ElementRef>;
+  theLastList: QueryList<ElementRef>;
 
-  project$: Observable<any>;
-  searchValue?: string;
+  alSub: Subscription;
+
+  airlines: any = [];
+
+  totalPages: number;
+  currentPage: number = 0;
 
   observer: any;
 
-  currentPage: number = 1;
-  totalPage: number;
-
-  airlines: any;
-  userSub: Subscription;
-
   constructor(
-    private spinner: NgxSpinnerService,
-    private as: AirlinesService
+    private alService: AirlinesService,
+    private spinner: NgxSpinnerService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getAirlines();
     this.intersectionObserver();
-    this.getAS();
   }
 
-  getAS() {
-    this.spinner.show();
-    this.userSub = this.as
-      .getAS(this.currentPage)
-      .pipe(
-        tap(() => {
-          this.spinner.hide();
-        })
-      )
-      .subscribe((d) => {
-        console.log(d);
-        this.totalPage = d.totalPages;
-
-        if (this.currentPage == 1) {
-          this.airlines = d.data;
-        } else {
-          d.data.forEach((element: any) => {
-            this.airlines?.push(element);
-          });
-        }
-      });
-  }
   ngAfterViewInit() {
-    this.theLastList?.changes.subscribe((d) => {
+    this.theLastList.changes.subscribe((d) => {
+      console.log(d);
       if (d.last) this.observer.observe(d.last.nativeElement);
     });
   }
 
+  getAirlines() {
+    this.spinner.show();
+    this.alSub = this.alService.getAS(this.currentPage).subscribe((d) => {
+      this.spinner.hide();
+      this.totalPages = d.totalPages;
+      d.data.forEach((element) => {
+        this.airlines.push(element);
+      });
+    });
+  }
+
   intersectionObserver() {
-    const option = {
+    let options = {
       root: null,
       rootMargin: '0px',
       threshold: 0.5,
@@ -77,11 +66,11 @@ export class AirlinesComponent implements OnInit {
 
     this.observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        if (this.currentPage < this.totalPage) {
+        if (this.currentPage < this.totalPages) {
           this.currentPage++;
-          this.getAS();
+          this.getAirlines();
         }
       }
-    }, option);
+    }, options);
   }
 }
